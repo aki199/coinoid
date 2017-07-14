@@ -11,21 +11,30 @@ class MessagesController < ApplicationController
     end
     
     
-    def new
-        @message = current_user.messages.build
+    def new 
+        @message = Message.new 
+        @categories = Category.all.map{|c| [ c.name, c.id ] }
     end
+
     
     def create
         @message = current_user.messages.build(message_params)
-        if @message.save
-            redirect_to root_path
-        else
-            render 'new'
+        @message.category_id = params[:category_id] 
+
+        respond_to do |format| 
+            if @message.save
+                format.html { redirect_to @message, notice: ('message was successfully created.') } 
+                format.json { render :show, status: :created, location: @message } 
+            else
+                render 'new'
+                format.html { render :new } 
+                format.json { render json: @message.errors, status: :unprocessable_entity } 
+            end
         end
     end
     
     def edit
-
+        @categories = Category.all.map{|c| [ c.name, c.id ] }
     end
     
     def update
@@ -34,6 +43,7 @@ class MessagesController < ApplicationController
         else
             render 'edit'
         end
+        @message.category_id = params[:category_id]
     end
     
     def destroy

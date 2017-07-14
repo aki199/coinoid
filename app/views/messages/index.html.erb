@@ -1,11 +1,21 @@
-<% @messages.each do |message| %>
-    <h2><%=link_to message.title, message_path(message) %></h2>
-        <p class="message-posted-by">Posted <%= time_ago_in_words(message.created_at) %> ago by <%= User.find(message.user_id).email %> </p>
-        <div class="post-nav">
-            <a href="#">Share</a>
-            <a href="#">Save</a>
-            <a href="#">Report</a>
-        </div>
-<% end %>
-</br>
-<%= link_to "New Message", new_message_path %>
+<div class="row">
+    <div class="col-1" style="border-right: 1px solid #ccc;">
+      Left side
+    </div>
+    <div class="col-9">
+        <% @messages.each do |message| %>
+        <h2><%=link_to message.title, message_path(message) %></h2>
+        <p class="message-posted-by">Posted <%= time_ago_in_words(message.created_at) %> ago by <%= User.find(message.user_id).email %> in <%= link_to Category.find(message.category_id).name, category_path(message.category_id) %> </p>
+            <div class="post-nav">
+                <a href="#">Share</a>
+                <a href="#">Save</a>
+                <a href="#">Report</a>
+            </div>
+        <% end %>
+        </br>
+        <%= link_to "New Message", new_message_path %>
+    </div>
+    <div class="col-2" style="border-left: 1px solid #ccc;">
+      Right side
+    </div>
+</div>
