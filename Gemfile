@@ -19,6 +19,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'devise', '~> 4.3'
+gem 'client_side_validations'
 
 
 
