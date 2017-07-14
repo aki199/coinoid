@@ -5,7 +5,7 @@
     <div class="col-9">
         <% @messages.each do |message| %>
         <h2><%=link_to message.title, message_path(message) %></h2>
-        <p class="message-posted-by">Posted <%= time_ago_in_words(message.created_at) %> ago by <%= User.find(message.user_id).email %> in <%= link_to Category.find(message.category_id).name, category_path(message.category_id) %> </p>
+        <p class="message-posted-by">Posted <%= time_ago_in_words(message.created_at) %> ago by <%= link_to User.find(message.user_id).email, user_path(message.user_id) %> in <%= link_to Category.find(message.category_id).name, category_path(message.category_id) %> </p>
             <div class="post-nav">
                 <a href="#">Share</a>
                 <a href="#">Save</a>
