@@ -1,0 +1,199 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+@import url(bootstrap.css);
+/* line 17, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+body {
+  background-color: #fff;
+  font-family: 'Playfair Display', serif;
+}
+
+/* line 22, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Muli', sans-serif;
+  font-weight: 300;
+}
+
+/* line 27, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+h2 {
+  font-size: 20px;
+  margin-bottom: 0rem;
+}
+
+/* line 32, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+p {
+  margin-bottom: 0rem;
+}
+
+/* line 36, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.btn-custom {
+  background-color: #fff;
+  color: #0a8fd5;
+  font-family: 'Muli', sans-serif;
+  font-weight: 300;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+/* line 43, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.btn-custom:hover {
+  color: #383838;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: #fff;
+  text-decoration: none;
+}
+
+/* line 51, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.btn:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  color: #383838;
+  background-color: #fff;
+}
+
+/* Navbar styles */
+/* line 60, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.navbar {
+  font-family: 'Muli', sans-serif;
+  text-transform: uppercase;
+}
+
+/* line 65, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.navbar-default {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #fff;
+}
+/* line 71, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.navbar-default .navbar-nav > li > a {
+  color: #222;
+}
+/* line 75, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.navbar-default .navbar-link {
+  color: #222;
+}
+/* line 79, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.navbar-default .navbar-brand {
+  color: #222;
+  letter-spacing: 1.1px;
+}
+
+/* Links styles */
+/* line 89, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.links {
+  margin-top: 20px;
+}
+/* line 91, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.links .btn-default {
+  color: #0a8fd5;
+}
+
+/* Message styles */
+/* line 99, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.message {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #383838;
+  margin-bottom: 25px;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 1.4em 1.4em;
+  height: 150px;
+  border-bottom: 4px solid #0a8fd5;
+}
+/* line 109, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.message .message-title {
+  font-size: 1.5em;
+  font-family: 'Muli', sans-serif;
+  font-weight: 300;
+  margin-top: 0;
+  color: white;
+  margin-bottom: 25px;
+}
+/* line 118, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.message .btn-custom {
+  margin-top: 20px;
+}
+
+/* line 124, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.message:nth-child(4n) {
+  clear: left;
+}
+
+/* Message show-page styles */
+/* line 130, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.message-show {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #f7f7f7;
+  padding: 2.0em 1.5em;
+  border-bottom: 4px solid #0a8fd5;
+  color: #000;
+  font-family: 'Muli', sans-serif;
+  font-weight: 300;
+}
+/* line 139, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.message-show h2 {
+  margin-top: 0;
+}
+/* line 143, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.message-show .message-desc {
+  font-size: 1.1em;
+  line-height: 1.75;
+  margin-bottom: 50px;
+}
+/* line 149, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.message-show .message-posted-by {
+  color: #8E8E8E;
+  font-size: 0.9em;
+}
+/* line 154, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.message-show .reply-to-msg {
+  margin-top: 50px;
+}
+
+/* Comment styles */
+/* line 163, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.comment {
+  border-bottom: 1px solid #8E8E8E;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+/* line 168, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.comment .comment-content {
+  font-size: 1.25em;
+}
+/* line 172, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.comment .comment-posted-by {
+  color: #8E8E8E;
+  font-size: 0.8em;
+}
+/* line 177, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.comment .links {
+  margin-top: 15px;
+}
+/* line 179, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.comment .links a {
+  color: #0a8fd5;
+  margin-right: 15px;
+}
+
+/* line 186, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.post-nav {
+  margin-bottom: 1rem;
+}
+
+/* line 189, /home/ubuntu/workspace/app/assets/stylesheets/application.scss */
+.post-nav a {
+  margin-right: 10px;
+}
