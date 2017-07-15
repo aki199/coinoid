@@ -1,0 +1,5 @@
+<% if !user_signed_in? %>
+    <%= render '/messages/right_guest' %>
+<% else %>
+    <%= render 'messages/right_user' %>
+<% end %>

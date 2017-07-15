@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
     
     def index
         @messages = Message.all.order("created_at DESC")
+        
     end
     
     def show
@@ -26,7 +27,6 @@ class MessagesController < ApplicationController
                 format.html { redirect_to @message, notice: ('message was successfully created.') } 
                 format.json { render :show, status: :created, location: @message } 
             else
-                render 'new'
                 format.html { render :new } 
                 format.json { render json: @message.errors, status: :unprocessable_entity } 
             end

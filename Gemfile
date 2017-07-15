@@ -22,6 +22,10 @@ gem 'jquery-rails'
 gem 'devise', '~> 4.3'
 gem 'client_side_validations'
 gem 'rails_12factor'
+gem 'mini_magick'
+gem 'fog'
+gem 'figaro'
+gem 'carrierwave'
 
 
 
