@@ -1,13 +1,12 @@
 <div class="row">
-    <div class="col-1" style="border-right: 1px solid #ccc;">
-      Left side
-    </div>
-    <div class="col-9">
+    <div class="col-11 col-offset-250">
+        <span class="notice"><%= notice %></span>
+        <span class="alert"><%= alert %></span>
         <% @messages.each do |message| %>
         <h2><%=link_to message.title, message_path(message) %></h2>
-        <p class="message-posted-by">Posted <%= time_ago_in_words(message.created_at) %> ago by <%= link_to User.find(message.user_id).email, user_path(message.user_id) %> in <%= link_to Category.find(message.category_id).name, category_path(message.category_id) %> </p>
+        <p class="message-posted-by">Posted <%= time_ago_in_words(message.created_at) %> ago by <%= link_to User.find(message.user_id).username, user_path(message.user_id) %> in <%= link_to Category.find(message.category_id).name, category_path(message.category_id) %> </p>
             <div class="post-nav">
-                <a href="#">Share</a>
+                <a href="http://www.facebook.com/">Share</a>
                 <a href="#">Save</a>
                 <a href="#">Report</a>
             </div>
@@ -15,7 +14,8 @@
         </br>
         <%= link_to "New Message", new_message_path %>
     </div>
-    <div class="col-2" style="border-left: 1px solid #ccc;">
-    <%= render "/messages/right" %>
+    <div class="col-fixed-250">
+        <%= render "/messages/left" %>
+        <%= render "/messages/left_fav" %>
     </div>
 </div>

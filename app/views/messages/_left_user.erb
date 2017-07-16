@@ -1,0 +1,23 @@
+<div style="background: #F7F7F7; margin-top: 10px;">
+    <a style="padding-left: 15px;">My Account</a>
+</div>
+<div class="right-sidebar" style="padding-top: 10px; ">
+    <div  style="float:left; padding-right: 10px;"> 
+        <%= image_tag current_user.avatar.url(:thumb) %>
+        <% if user_signed_in? %>
+            <p><%= link_to "New Message", new_message_path, class: "navbar-right navbar-text navbar-link" %></p>
+            <p><%= link_to "New Category", new_category_path %></p>
+            <p><%= link_to 'Preferences', edit_user_registration_path  %></p>
+            <p><%= link_to'Sign Out', destroy_user_session_path, method: :delete  %></p>
+
+        <% end %>
+    </div>
+    <a class="user-title"><%= current_user.username %></a></br>
+    <a><%= link_to "Posts", user_path(current_user.id)  %></a></br>
+    <a><%= link_to "Gigs", user_path(current_user.id)  %></a></br>
+    <a><%= link_to "Comments", user_path(current_user.id)  %></a></br>
+
+</div>
+<div style="background: #F7F7F7; margin-top: 120px;">
+    <a style="padding-left: 15px;">Favorite Posts</a>
+</div>
