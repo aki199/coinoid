@@ -10,8 +10,8 @@
   <%= @category.desc %>
 </p>
 <h3> Posts under this category </h3>
-<% Message.where(category_id: @category.id).each do |message| %>
-<li> <%= message.title %> </li>
+<% Posts.where(category_id: @category.id).each do |post| %>
+<li> <%= post.title %> </li>
 <% end %>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |

@@ -1,14 +1,14 @@
 class CommentsController < ApplicationController
-    before_action :find_message
+    before_action :find_post
     before_action :find_comment, only: [:edit, :update, :destroy]
     before_action :authenticate_user!
     
     def create
-        @comment = @message.comments.create(comment_params)
+        @comment = @post.comments.create(comment_params)
         @comment.user_id = current_user.id
     
         if @comment.save
-            redirect_to message_path(@message)
+            redirect_to post_path(@post)
         else
             render 'new'
         end
@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
     
     def update
         if @comment.update(comment_params)
-            redirect_to message_path(@message)
+            redirect_to post_path(@post)
         else
             render 'edit'
         end
@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
     
     def destroy
         @comment.destroy
-        redirect_to message_path(@message)
+        redirect_to post_path(@post)
     end
     
     private
@@ -35,11 +35,11 @@ class CommentsController < ApplicationController
             params.require(:comment).permit(:content)
         end
         
-        def find_message
-            @message = Message.find(params[:message_id])
+        def find_post
+            @post = post.find(params[:post_id])
         end
         
         def find_comment
-            @comment = @message.comments.find(params[:id])
+            @comment = @post.comments.find(params[:id])
         end
 end

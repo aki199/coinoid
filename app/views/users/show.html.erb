@@ -1,13 +1,20 @@
-<h1><%= @user.username %></h1>
-<%= image_tag @user.avatar.url(:thumb)%>
-</br>
-<h2>User Posts</h2>
-<% @user_messages.each do |message| %>
-    <h2><%=link_to message.title, message_path(message) %></h2>
-        <p class="message-posted-by">Posted <%= time_ago_in_words(message.created_at) %> ago by <%= User.find(message.user_id).email %> in <%= link_to Category.find(message.category_id).name, category_path(message.category_id) %> </p>
-            <div class="post-nav">
-                <a href="#">Share</a>
-                <a href="#">Save</a>
-                <a href="#">Report</a>
-            </div>
-<% end %>
+<div class="row">
+    <div class="col-11 col-offset-250">
+        <% @user_posts.each do |post| %>
+            <h2><%=link_to post.title, post_path(post) %></h2>
+                <p class="post-posted-by">Posted <%= time_ago_in_words(post.created_at) %> ago by <%= User.find(post.user_id).email %> in <%= link_to Category.find(post.category_id).name, category_path(post.category_id) %> </p>
+                    <div class="post-nav">
+                        <a href="#">Share</a>
+                        <a href="#">Save</a>
+                        <a href="#">Report</a>
+                    </div>
+        <% end %>
+        <% @user_comments.each do |comment| %>
+            <h2><%= comment.content %></h2>
+        <% end %>
+
+    </div>
+    <div class="col-fixed-250">
+        <%= render 'users/left_user' %>
+    </div>
+</div>

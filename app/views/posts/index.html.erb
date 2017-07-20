@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-11 col-offset-250">
+        <span class="notice"><%= notice %></span>
+        <span class="alert"><%= alert %></span>
+        <% @posts.each do |post| %>
+        <h2><%=link_to post.title, post_path(post) %></h2>
+        <p class="post-posted-by">Posted <%= time_ago_in_words(post.created_at) %> ago by <%= link_to User.find(post.user_id).username, user_path(post.user_id) %> in <%= link_to Category.find(post.category_id).name, category_path(post.category_id) %> </p>
+            <div class="post-nav">
+                <a href="http://www.facebook.com/">Share</a>
+                <a href="#">Save</a>
+                <a href="#">Report</a>
+                    <span class="upvote-link">
+                        <%= link_to "Upvote (#{post.upvotes})", upvote_post_path(post), method: :post %>
+                    </span>
+            </div>
+        <% end %>
+        </br>
+        <%= link_to "New post", new_post_path %>
+    </div>
+    <div class="col-fixed-250">
+        <%= render "/posts/left" %>
+        <%= render "/posts/left_fav" %>
+    </div>
+</div>

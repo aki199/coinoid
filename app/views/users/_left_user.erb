@@ -1,0 +1,11 @@
+<div style="background: #F7F7F7; margin-top: 10px;">
+    <a style="padding-left: 15px;"><a class="user-title"><%= @user.username %></a></a>
+</div>
+<div class="right-sidebar" style="padding-top: 10px; ">
+    <div  style="float:left; padding-right: 10px;"> 
+        <%= image_tag @user.avatar.url(:thumb)%>
+        <a><%= link_to "Write a message", conversation_path(@user.id)  %></a></br>
+
+        </br>
+    </div>
+</div>

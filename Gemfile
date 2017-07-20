@@ -26,7 +26,7 @@ gem 'mini_magick'
 gem 'fog'
 gem 'figaro'
 gem 'carrierwave'
-
+gem 'mailboxer', github: 'mailboxer/mailboxer'
 
 
 group :development, :test do

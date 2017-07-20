@@ -3,10 +3,15 @@ Rails.application.routes.draw do
 
   resources :categories
   resources :products
+  resources :conversations do
+    resources :messages
+  end
+  
   devise_for :users
-  resources :messages do
+  resources :posts do
     resources :comments
+    post :upvote, on: :member
   end
   resources :users
-  root 'messages#index'
+  root 'posts#index'
 end

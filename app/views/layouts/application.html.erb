@@ -9,8 +9,12 @@
   </head>
 
   <body>
-    <%= render "/layouts/nav" %>
-    <%= yield %>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <%= render "/layouts/nav" %>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
     <div class="footer"><p>Coinoid © 2017 | <a href="#">Privacy</a> | <a href="#">Advertise</a> | <a href="#">Help</a> | <a href="#">Feedback</a></p></div>
   </body>
 </html>
