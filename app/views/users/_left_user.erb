@@ -1,11 +1,14 @@
 <div style="background: #F7F7F7; margin-top: 10px;">
     <a style="padding-left: 15px;"><a class="user-title"><%= @user.username %></a></a>
 </div>
-<div class="right-sidebar" style="padding-top: 10px; ">
-    <div  style="float:left; padding-right: 10px;"> 
+<div class="user-block">
+    <div class="profile">
         <%= image_tag @user.avatar.url(:thumb)%>
-        <a><%= link_to "Write a message", conversation_path(@user.id)  %></a></br>
-
-        </br>
+    </div>
+    <div class="user-nav">
+        <a><%= link_to "Private Message", conversation_path(@user.id)  %></a></br>
+        <a><%= link_to "Add as Friend", conversation_path(@user.id)  %></a></br>
+        <a><%= link_to "Latest Posts", conversation_path(@user.id)  %></a></br>
+        <a><%= link_to "Find latest posts", conversation_path(@user.id)  %></a></br>
     </div>
 </div>

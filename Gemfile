@@ -18,7 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'devise', '~> 4.3'
 gem 'client_side_validations'
 gem 'rails_12factor'
@@ -27,7 +27,8 @@ gem 'fog'
 gem 'figaro'
 gem 'carrierwave'
 gem 'mailboxer', github: 'mailboxer/mailboxer'
-
+gem 'activeadmin', github: 'activeadmin'
+gem 'searchkick', '~> 1.1', '>= 1.1.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

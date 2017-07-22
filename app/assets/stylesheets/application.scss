@@ -232,3 +232,28 @@ p {
     margin-right: -50%;
     transform: translate(-50%, -50%) 
 }
+
+.user-block {
+	position: relative;
+}
+
+.profile, .user-nav {
+     display: inline-block;   
+	 top: 0;
+	 z-index: 1;
+}
+.profile {
+	vertical-align: text-bottom;
+}
+.user-nav {
+	padding-left: 8px;
+}
+
+.liked-posts {
+	font-size: 15px;
+	padding-top: 10px;
+}
+
+.unlike {
+	color: red;
+}

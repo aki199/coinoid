@@ -1,5 +1,6 @@
 class Category < ApplicationRecord
-
+    has_many :posts
+    
     def index
         @categories = Category.all
     end

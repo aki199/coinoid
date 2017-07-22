@@ -10,6 +10,9 @@
                     <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default" %>
                 <% end %>
             <% end %>
+            <div id="post_<%= @post.id %>_likes">
+                <%= render partial: "likes", locals: {post: @post} %>
+            </div>
         </div>
         
         <h3>Comments:</h3>

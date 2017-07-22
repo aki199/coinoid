@@ -1,10 +1,21 @@
 class PostsController < ApplicationController
     before_action :find_post, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!, except: [:index, :show]
+    helper_method :resource_name, :resource, :devise_mapping, :resource_class
     
     
     def index
-        @posts = Post.all.order("created_at DESC")
+        unless user_signed_in?
+            query = params[:q].presence || "*"
+            @posts = Post.all.order("created_at DESC")
+            @posts = Post.search(query)
+        else
+            query = params[:q].presence || "*"
+            @posts = Post.all.order("created_at DESC")
+            @posts = Post.search(query)
+            @likes = current_user.likes
+        end
+
     end
     
     def show
@@ -50,17 +61,23 @@ class PostsController < ApplicationController
         redirect_to root_path
     end
     
-    def upvote
-        post = Post.find_by(id: params[:id])
-        
-        if current_user.upvoted?(post)
-        current_user.remove_vote(post)
-        else
-        current_user.upvote(post)
-        end
-        
-        redirect_to root_path
+    
+    def resource_name
+    :user
     end
+    
+    def resource
+    @resource ||= User.new
+    end
+    
+    def resource_class
+    User
+    end
+    
+    def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+    end
+    
     
     private
     

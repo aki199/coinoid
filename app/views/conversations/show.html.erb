@@ -5,6 +5,7 @@
     <div> <%= receipt.message.sender.username %> wrote:</div>
     <p><%= receipt.message.body %></p>
 </div>
+
 <% end %>
 
 <%= form_tag conversation_messages_path(@conversation), method: :post do %>

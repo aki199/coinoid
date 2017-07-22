@@ -16,5 +16,8 @@
         <a class="nav-link" href="#">Marketplace</a>
       </li>
     </ul>
+    <%= form_tag posts_path, method: :get do %>
+    <%= text_field_tag :q, nil, placeholder: "Search" %>
+    <% end %>
   </div>
 </div>
