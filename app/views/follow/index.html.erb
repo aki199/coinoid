@@ -1,0 +1,30 @@
+
+
+<div class="row">
+    <div class="col-11 col-offset-250">
+        <div>
+        <% current_user.following.each do |followed| %>
+            <% followed.posts.each do |post| %>
+                <h2><%=link_to post.title, post_path(post) %></h2>
+                <p class="post-posted-by">Posted <%= time_ago_in_words(post.created_at) %> ago by <%= link_to User.find(post.user_id).username, user_path(post.user_id) %> in <%= link_to Category.find(post.category_id).name, category_path(post.category_id) %> </p>
+                    <div class="post-nav">
+                        <a href="http://www.facebook.com/">Share</a>
+                        <a href="#">Save</a>
+                        <a href="#">Report</a>
+                    </div>
+            <% end %>
+        <% end %>
+        </div>
+        
+        <div>
+        <% current_user.following.each do |followed| %>
+            <% followed.comments.each do |comment| %>
+                <p class="comment-posted-by">Posted by <%= comment.user.email %> <%= time_ago_in_words(comment.created_at) %></p>
+                <h2><%= comment.content %></h2>
+            <% end %>
+        <% end %>
+        </div>
+    </div>
+
+</div>
+

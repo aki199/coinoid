@@ -10,6 +10,9 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require froala_editor.min.css
+ *= require froala_style.min.css
+ *= require font-awesome
  */
 @import "bootstrap.css";
 
@@ -193,7 +196,7 @@ p {
 }
 
 .col-fixed-250{
-    width: 265px;
+    width: 210px;
     position: fixed;
     height: 100%;
     z-index: 1;
@@ -202,7 +205,7 @@ p {
 }
 
 .col-offset-250{
-    padding-left:275px;
+    padding-left:225px;
     z-index:0;
 }
 .right-sidebar {
@@ -256,4 +259,29 @@ p {
 
 .unlike {
 	color: red;
+}
+
+
+.follow-button {
+  text-transform: uppercase;
+  border-color: #4090db;
+  color: #4090db;
+  margin-left: 20px;
+  &:visited, &:focus, &:hover {
+    border-color: #2D6396;
+    color: #2D6396;
+  }
+}
+
+.unfollow-button {
+  text-transform: uppercase;
+  border-color: #66bd2b;
+  background-color: #66bd2b;
+  color: white;
+  margin-left: 20px;
+  &:visited, &:focus, &:hover {
+    border-color: #47821F;
+    background-color: #47821F;
+    color: white;
+  }
 }

@@ -6,13 +6,27 @@
 </p>
 
 <p>
-  <strong>Desc:</strong>
+  <strong>Description:</strong>
   <%= @category.desc %>
 </p>
 <h3> Posts under this category </h3>
-<% Posts.where(category_id: @category.id).each do |post| %>
-<li> <%= post.title %> </li>
+<% Post.where(category_id: @category.id).each do |post| %>
+<li> <%= link_to post.title, post_path(post) %> </li>
 <% end %>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
+
+
+    <span>
+    <% if @user == current_user %>
+      <%= link_to 'Edit Profile', edit_user_registration_path(@user.id), class: 'btn edit-button' %>
+    <% else %>
+      <% if current_category_is_subscribed(current_user.id, @category.id) %>
+        <%= link_to 'Unsubscribe', unsubscribe_user_path, remote: true, class: 'btn unfollow-button', id: 'unfollow-button', method: :post %>
+      <% else %>
+        <%= link_to 'Subscribe', subscribe_user_path, remote: true, class: 'btn follow-button', id: 'follow-button', method: :post %>
+      <% end %>
+    <% end %>
+    </span>
+    

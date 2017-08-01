@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721212040) do
+ActiveRecord::Schema.define(version: 20170801061100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20170721212040) do
     t.text "desc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ticker_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -61,6 +62,16 @@ ActiveRecord::Schema.define(version: 20170721212040) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "following_id", null: false
+    t.integer "follower_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["following_id", "follower_id"], name: "index_follows_on_following_id_and_follower_id", unique: true
+    t.index ["following_id"], name: "index_follows_on_following_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -144,6 +155,16 @@ ActiveRecord::Schema.define(version: 20170721212040) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "subscribes", force: :cascade do |t|
+    t.integer "subscription_id", null: false
+    t.integer "subscriber_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subscriber_id"], name: "index_subscribes_on_subscriber_id"
+    t.index ["subscription_id", "subscriber_id"], name: "index_subscribes_on_subscription_id_and_subscriber_id", unique: true
+    t.index ["subscription_id"], name: "index_subscribes_on_subscription_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -164,9 +185,21 @@ ActiveRecord::Schema.define(version: 20170721212040) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "post_id"
+    t.integer "upvote", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_votes_on_post_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
+  add_foreign_key "votes", "posts"
+  add_foreign_key "votes", "users"
 end

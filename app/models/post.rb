@@ -5,10 +5,20 @@ class Post < ApplicationRecord
     has_many :votes
     has_many :likes
     
+    require 'rest-client'
+    require 'json'
+   
+
+    
     searchkick
     
     scope :published, ->{ where.not(created_at: nil) }
     scope :unpublished, ->{ where(created_at: nil) }
+    
+
+
+
+    
     def upvotes
         votes.sum(:upvote)
     end

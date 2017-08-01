@@ -29,6 +29,9 @@ gem 'carrierwave'
 gem 'mailboxer', github: 'mailboxer/mailboxer'
 gem 'activeadmin', github: 'activeadmin'
 gem 'searchkick', '~> 1.1', '>= 1.1.2'
+gem 'wysiwyg-rails'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
+gem 'rest-client'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

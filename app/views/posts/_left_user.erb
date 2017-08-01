@@ -1,7 +1,6 @@
 <div style="background: #F7F7F7; margin-top: 10px;">
-    <a style="padding-left: 15px;">My Account</a>
+    <a class="user-title"><%= current_user.username %></a>
 </div>
-<div><a class="user-title"><%= current_user.username %></a></div>
 <div class="user-block">
     <div class="profile">
         <%= image_tag current_user.avatar.url(:thumb) %>
@@ -14,6 +13,31 @@
         <a><%= link_to 'Sign Out', destroy_user_session_path, method: :delete  %></a></br>
     </div>
 </div>
+<div class="stats">
+    <a href="<%= following_user_path(current_user) %>">
+    <strong id="following" class="stat">
+      <%= current_user.following.count %>
+    </strong>
+    following
+    </a>
+    <a href="<%= followers_user_path(current_user) %>">
+    <strong id="followers" class="stat">
+      <%= current_user.followers.count %>
+    </strong>
+    followers
+    </a>
+</div>
+
+
+<div class="stats">
+    <strong id="following" class="stat">
+      <%= current_user.subscription.count %>
+    </strong>
+    Subscriptions
+  </a>
+</div>
+
+
 <div>
     <a><%= link_to "New Post", new_post_path %></a></br>
     <a><%= link_to "New Category", new_category_path %></a></br>
@@ -28,7 +52,19 @@
 <div class="liked-posts">
 <% @likes.reverse.each do |like| %>
     <%= link_to image_tag('del.png'), post_like_path(like.post), method: :delete, :class=>"unlike" %>
-    <%= link_to like.post.title.truncate(35), post_path(like.post_id), :maxlength => 10  %></br>
+    <%= link_to like.post.title.truncate(28), post_path(like.post_id), :maxlength => 10  %></br>
 <% end %>
 
+</div>
+
+<div style="background: #F7F7F7;">
+    <a style="padding-left: 15px;">Prices</a>
+</div>
+
+
+<div class="row">
+    <% current_user.subscription.each do |subscription| %>
+        <%= subscription.name%>:
+        <%= @result[subscription.ticker_id]["price_usd"] %></br>
+    <% end %>
 </div>

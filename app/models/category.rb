@@ -1,6 +1,9 @@
 class Category < ApplicationRecord
     has_many :posts
     
+
+    
+    
     def index
         @categories = Category.all
     end
@@ -42,6 +45,9 @@ class Category < ApplicationRecord
     def destroy
         Category.find(params[:id]).destroy
     end
+
+
+
 
     
     private

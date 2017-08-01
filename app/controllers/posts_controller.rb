@@ -3,17 +3,31 @@ class PostsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
     helper_method :resource_name, :resource, :devise_mapping, :resource_class
     
+
     
     def index
         unless user_signed_in?
             query = params[:q].presence || "*"
             @posts = Post.all.order("created_at DESC")
             @posts = Post.search(query)
+            
+            url = "https://api.coinmarketcap.com/v1/ticker/"
+            response = RestClient.get(url)
+            data=response.body
+            @result = JSON.parse(data)
+
+            
+            
         else
             query = params[:q].presence || "*"
             @posts = Post.all.order("created_at DESC")
             @posts = Post.search(query)
             @likes = current_user.likes
+
+            url = "https://api.coinmarketcap.com/v1/ticker/"
+            response = RestClient.get(url)
+            data=response.body
+            @result = JSON.parse(data)
         end
 
     end

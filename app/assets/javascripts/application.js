@@ -17,3 +17,4 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require bootstrap.min
+//= require froala_editor.min.js

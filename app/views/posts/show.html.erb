@@ -2,7 +2,7 @@
     <div class="post-show">
         <h2><%= @post.title %></h2>
         <p class="post-posted-by">Posted by <%= @post.user.email %> <%= time_ago_in_words(@post.created_at) %> ago in <%= link_to Category.find(@post.category_id).name, category_path(@post.category_id) %> </p>
-        <p class="post-desc"><%= @post.description %></p>
+        <p class="post-desc"><%= @post.description.html_safe %></p>
         <div class="links btn-group">
             <% if user_signed_in? %>
                 <% if @post.user_id == current_user.id %>
@@ -20,7 +20,5 @@
         
         <h3 class="reply-to-msg">Reply to post:</h3>
         <%= render 'comments/form' %>
-        
-
     </div>
 </div>

@@ -1,6 +1,6 @@
 <%= simple_form_for @post do |f| %>
     <%= f.input :title, label: "Post Title" %>
-    <%= f.input :description %>
+    <%= f.input :description, :input_html => {:rows => 10} %>
     <%= f.button :submit %>
     <%= select_tag(:category_id, options_from_collection_for_select(Category.all, :id, :name), include_blank: "Select Category") %>
 <% end %>

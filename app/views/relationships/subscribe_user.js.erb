@@ -1,0 +1,4 @@
+$('#follow-button').attr('class', 'btn unfollow-button')
+                   .text('Unsubscribe')
+                   .attr('href', "/<%= @category.id %>/unsubscribe_user")
+                   .attr('id', 'unfollow-button');

@@ -6,8 +6,12 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
-
+    <script> $(function() { $('textarea').froalaEditor({
+      height: 200
+    })
+ }); </script>
   <body>
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
       <%= render "/layouts/nav" %>
